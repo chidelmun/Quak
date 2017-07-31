@@ -6,6 +6,7 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     <script   src="http://code.jquery.com/jquery-3.2.1.min.js"   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="   crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
   </head>
   <body ng-app="">
   <div  class="jumbotron">
@@ -38,6 +39,21 @@
   <script type="text/javascript">
   	$(document).ready(function(){
 
+  		var config = {
+            apiKey: "AIzaSyBuXatxwxjYbs1sdhERTXn-00E5jMAuJ00",
+            authDomain: "quak-cc7dd.firebaseapp.com",
+            databaseURL: "https://quak-cc7dd.firebaseio.com",
+            projectId: "quak-cc7dd",
+            storageBucket: "quak-cc7dd.appspot.com",
+            messagingSenderId: "479388307902"
+        };
+
+        firebase.initializeApp(config);
+
+        var ref = firebase.database().ref('nodeclient');
+
+
+
   		String.prototype.getDigest = function() {
 		  var digest = 0, i, chr;
 		  if (this.length === 0) return digest;
@@ -55,7 +71,7 @@
   		$("button").click(function(){
   			$("#url_encode").val("http://localhost:3000/codes/?q=" + $("#code").val().getDigest());
   			$("#url_encode").show();
-  			
+  			alert(ref);	
 
   		});
   	});
