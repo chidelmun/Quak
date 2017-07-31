@@ -12,8 +12,14 @@
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
     <div class="form-group">
-	  <label for="comment">Comment:</label>
-	  <textarea ng-model="code" class="form-control" rows="6" id="code"></textarea>
+    	<div class="row">
+    		<div class="col-md-6">
+    		 <center><textarea ng-model="code" class="form-control" rows="6" id="code"></textarea></center>
+    		</div>
+    		<div class="col-md-6">
+    			<p>Output:</p>	
+    		</div>
+    	</div>
 	</div>
   </div>
   <div class="container">
@@ -31,10 +37,25 @@
 
   <script type="text/javascript">
   	$(document).ready(function(){
+
+  		String.prototype.getDigest = function() {
+		  var digest = 0, i, chr;
+		  if (this.length === 0) return digest;
+		  for (i = 0; i < this.length; i++) {
+		    chr   = this.charCodeAt(i);
+		    digest  = ((digest << 5) - digest) + chr;
+		    digest |= 0; // Convert to 32bit integer
+		  }
+		  return digest;
+		};
+
+
+
   		$("#url_encode").hide();
   		$("button").click(function(){
-  			$("#url_encode").val($("#code").val());
+  			$("#url_encode").val("http://localhost:3000/codes/?q=" + $("#code").val().getDigest());
   			$("#url_encode").show();
+  			
 
   		});
   	});
