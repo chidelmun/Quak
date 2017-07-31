@@ -29,7 +29,7 @@ app.use('/codes', codes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found | Quak');
+  var err = new Error('Page Not Found | Quak');
   err.status = 404;
   next(err);
 });

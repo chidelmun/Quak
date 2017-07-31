@@ -20,7 +20,7 @@ router.get('/', function(req, res, next) {
   	}
   });
 
-  connection.query("SELECT * FROM codes", function(error, results){
+  connection.query("SELECT * FROM codes ORDER BY RAND()", function(error, results){
   	if (error) {
   		console.log("Error with Query :" + error);
   	}else{

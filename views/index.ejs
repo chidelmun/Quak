@@ -11,8 +11,8 @@
   </head>
   <body ng-app="">
   <div  class="jumbotron">
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <h2 class="text-primary"><%= title %></h2>
+    <p class="text-danger"> Start typing code below and click Share button to create tryit link</p>
     <div class="form-group">
     	<div class="row">
     		<div class="col-md-6">
@@ -27,8 +27,9 @@
   <div class="container">
   		<div class="row">
   			<div class="jumbotron">
+  			<center><p class="text-success">Tryit Out</p></center>
   				<code>{{code}}</code>
-  			</div> <span><button id="show_url" class="btn btn-success">Share</button></span>
+  			</div> <span><button id="show_url" class="btn btn-success">Get Digest</button></span>
   			
   		</div>
   		<div class="form-group">
@@ -91,7 +92,9 @@
 			success : function(result){
 				$("#url_encode").val("http://localhost:3000/codes/?q=" + $("#code").val().getDigest());
 			}
-		});
+			});
+
+			// $('#show_url').text("Share");
 
   		});
   	});
