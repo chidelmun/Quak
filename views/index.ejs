@@ -83,7 +83,7 @@
 
   		$("#url_encode").hide();
   		$("button").click(function(){
-  			$("#url_encode").val("http://localhost:3000/codes/?q=" + $("#code").val().getDigest());
+  			$("#url_encode").val("http://localhost:3000/codes/api/" + $("#code").val().getDigest());
   			$("#url_encode").show();
   			$.ajax({
   			type : 'GET',
@@ -94,7 +94,7 @@
 			}
 			});
 
-			// $('#show_url').text("Share");
+			
 
   		});
   	});
