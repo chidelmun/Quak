@@ -19,7 +19,8 @@
     		 <center><textarea ng-model="code" class="form-control" rows="6" id="code"></textarea></center>
     		</div>
     		<div class="col-md-6">
-    			<p>Output:</p>	
+    			<p class="text-primary"> Language Syntax Discovered</p>	
+          <center><p>null</p></center>
     		</div>
     	</div>
 	</div>
@@ -77,7 +78,7 @@
 			url : 'http://localhost:3000/codes',
 			success : function(result){
 				for(var i = 0 ; i < result.length ; ++i){
-					$('#results').append( "<a href='#' class='list-group-item'>" + result[i].digest + "</a>");
+					$('#results').append( "<p id='goto'    class='list-group-item'>" + result[i].digest + "</p>");
 				}
 			}
 		});
@@ -96,9 +97,6 @@
 				$("#url_encode").val(trylink);
 			}
 			});
-
-			
-
   		});
   	});
 
