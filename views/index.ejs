@@ -33,7 +33,8 @@
   			
   		</div>
   		<div class="form-group">
-		  <input  type="text" class="form-control" id="url_encode">
+		  <input  type="text" class="form-control" id="url_encode" value='<%= url %>' >
+      <input type="hidden" id="url" value='<%= url %>' name="url">
 		</div>
 		<div id="results" class="list-group">
 		</div>
@@ -57,7 +58,8 @@
         var ref = firebase.database().ref('nodeclient');
 
 
-
+        var link = $('#url').val();
+        
   		String.prototype.getDigest = function() {
 		  var digest = 0, i, chr;
 		  if (this.length === 0) return digest;
@@ -83,14 +85,15 @@
 
   		$("#url_encode").hide();
   		$("button").click(function(){
-  			$("#url_encode").val("http://localhost:3000/codes/api/" + $("#code").val().getDigest());
-  			$("#url_encode").show();
+        var trylink = link+"codes/api/" + $("#code").val().getDigest();
+        $("#url_encode").show();
+  			$("#url_encode").val(trylink);
   			$.ajax({
   			type : 'GET',
   			contentType: "application/json",
-			url : 'http://localhost:3000/codes',
-			success : function(result){
-				$("#url_encode").val("http://localhost:3000/codes/api/" + $("#code").val().getDigest());
+			   url : 'http://localhost:3000/codes',
+			 success : function(result){
+				$("#url_encode").val(trylink);
 			}
 			});
 
